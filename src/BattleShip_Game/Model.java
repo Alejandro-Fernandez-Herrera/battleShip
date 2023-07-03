@@ -10,6 +10,7 @@ import java.util.HashMap;
  *
  */
 
+
 public class Model {
     private JLabel Model[][];
     private HashMap<JLabel, Integer> BusyBox; // Verifica si la casilla esta ocupada por una nave, 1 si esta ocupado, 2 si fue atacado

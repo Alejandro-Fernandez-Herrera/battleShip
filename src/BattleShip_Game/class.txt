@@ -1,4 +1,0 @@
-ok model.java
-se encuentra la lógica para escanear el tablero de juego y tener en cuenta los impactos a los
-barcos, de esa forma se detemina cuando el usuario pierde o gana el juego.
-
