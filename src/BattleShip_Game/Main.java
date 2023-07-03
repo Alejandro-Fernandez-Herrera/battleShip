@@ -19,10 +19,10 @@ public class Main extends JFrame {
         initGUI();
 
         //Default JFrame configuration
-        this.setTitle("Batalla Naval");
+        this.setTitle("BATTLESHIP");
         this.setIconImage(image);
         this.setUndecorated(false);
-        this.setSize(1500,750);
+        this.setSize(1000,500);
         this.setResizable(true);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -37,5 +37,9 @@ public class Main extends JFrame {
 
     }
 
-
+    public static void main(String[] args){
+        EventQueue.invokeLater(() -> {
+            Main GUIMain = new Main();
+        });
+    }
 }
