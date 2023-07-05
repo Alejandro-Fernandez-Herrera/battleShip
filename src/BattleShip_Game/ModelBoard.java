@@ -11,14 +11,14 @@ import java.util.HashMap;
  */
 
 
-public class Model {
+public class ModelBoard {
     private JLabel Model[][];
     private HashMap<JLabel, Integer> BusyBox; // Verifica si la casilla esta ocupada por una nave, 1 si esta ocupado, 2 si fue atacado
     private HashMap<JLabel, Integer> BoxShip; // Relacion entre la casilla y las casillas que usa la nave
     private HashMap<JLabel, String> BoxNameShip; // Almacena el nombre del barco ubicado en la casilla
 
 
-    public Model(){
+    public ModelBoard(){
         Model = new JLabel[11][11];
         BusyBox = new HashMap<>();
         BoxShip = new HashMap<>();
