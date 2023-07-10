@@ -218,20 +218,27 @@ public class navyPanel extends JPanel{
         subButtonPanel2.add(leftRight);
         subButtonPanel2.add(rightLeft);
         buttonPanel.add(subButtonPanel2, BorderLayout.EAST);
+
 // Returns the specified ship button
-        public JButton getShipButton(String ship) {
-            JButton button = new JButton();
-            if (ship.equals("aircraftCarrier")) {
-                button = aircraftCarrier;
-            } else if (ship.equals("submarine")) {
+    public JButton getShipButton(String ship){
+        JButton button = new JButton();
+        if (ship.equals("aircraftCarrier")) {
+            button = aircraftCarrier;
+        } else {
+            if (ship.equals("submarine")) {
                 button = submarine;
-            } else if (ship.equals("destroyer")) {
-                button = destroyer;
-            } else if (ship.equals("frigate")) {
-                button = frigate;
+            } else {
+                if (ship.equals("destroyer")) {
+                    button = destroyer;
+                } else {
+                    if (ship.equals("frigate")) {
+                        button = frigate;
+                        }
+                    }
+                }
             }
-            return button;
-        }
+        return button;
+    }
 
 // Returns the specified orientation button
         public JButton getOrientationButton(String orientation) {
