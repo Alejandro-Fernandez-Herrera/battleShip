@@ -1,7 +1,5 @@
 package BattleShip_Game;
 
-package myProject;
-
 import javax.swing.*;
 import java.util.ArrayList;
 
@@ -11,8 +9,8 @@ import java.util.ArrayList;
  * @autor Brayan Stiven Sanchez - brayan.sanchez.leon@correounivalle.edu.co - 202043554
  * @version 1.0.0 date 17/3/2022
  */
-public class PaintOpponentFleet {
-    private OpponentBoardPanel opponentBoardPanel;
+public class PaintComputerFleet {
+    private BoardComputerPanel opponentBoardPanel;
     private int carrierCount; // Total number of carriers
     private int submarineCount; // Total number of submarines
     private int destroyerCount; // Total number of destroyers
@@ -21,7 +19,7 @@ public class PaintOpponentFleet {
     private ArrayList<Integer> usedShipCells; // Cells used by each ship
 
     // Constructor
-    public PaintOpponentFleet(OpponentBoardPanel _opponentBoardPanel){
+    public PaintComputerFleet(BoardComputerPanel _opponentBoardPanel){
         this.opponentBoardPanel = _opponentBoardPanel;
         carrierCount = 1;
         submarineCount = 2;
@@ -61,19 +59,19 @@ public class PaintOpponentFleet {
     public void relateJLabelShip(JLabel cell, String ship, int shipNumber){
         if(ship.equals("carrier" + String.valueOf(shipNumber))){
             usedShipCells.add(4);
-            opponentBoardPanel.getOpponentBoard("position").getCellShip().put(cell, usedShipCells.get(usedShipCells.size()-1));
+            opponentBoardPanel.getTableroOponente("position").getBoxShip().put(cell, usedShipCells.get(usedShipCells.size()-1));
         }else{
             if(ship.equals("submarine" + String.valueOf(shipNumber))){
                 usedShipCells.add(3);
-                opponentBoardPanel.getOpponentBoard("position").getCellShip().put(cell, usedShipCells.get(usedShipCells.size()-1));
+                opponentBoardPanel.getTableroOponente("position").getBoxShip().put(cell, usedShipCells.get(usedShipCells.size()-1));
             }else{
                 if(ship.equals("destroyer" + String.valueOf(shipNumber))){
                     usedShipCells.add(2);
-                    opponentBoardPanel.getOpponentBoard("position").getCellShip().put(cell, usedShipCells.get(usedShipCells.size()-1));
+                    opponentBoardPanel.getTableroOponente("position").getBoxShip().put(cell, usedShipCells.get(usedShipCells.size()-1));
                 }else{
                     if(ship.equals("frigate" + String.valueOf(shipNumber))){
                         usedShipCells.add(1);
-                        opponentBoardPanel.getOpponentBoard("position").getCellShip().put(cell, usedShipCells.get(usedShipCells.size()-1));
+                        opponentBoardPanel.getTableroOponente("position").getBoxShip().put(cell, usedShipCells.get(usedShipCells.size()-1));
                     }
                 }
             }
@@ -121,8 +119,8 @@ public class PaintOpponentFleet {
                     nextImage = 1;
                     // Determines if the next cells are occupied by another ship or not
                     for(int cell=col; cell < col+cellsToUse; cell++){
-                        if(opponentBoardPanel.getOpponentBoard("position").getOccupiedCells().get(opponentBoardPanel.getOpponentBoard("position").getMatrix()[row][cell]) == Integer.valueOf(```java
-                                1)) {
+                        if(opponentBoardPanel.getTableroOponente("position").getBusyBox().get(opponentBoardPanel.getTableroOponente("position").getMatriz()[row][cell]) == Integer.valueOf(1)) {
+                            usedCells++;
                             usedCells++;
                         }
                     }
@@ -130,10 +128,10 @@ public class PaintOpponentFleet {
                     // If the next cells are not occupied, the ship is deployed
                     if(usedCells == 0){
                         for(int pic=col; pic < col+cellsToUse; pic++){
-                            opponentBoardPanel.getOpponentBoard("position").getMatrix()[row][pic].setIcon(new ImageIcon(getClass().getResource(pathImages(ship, orientationState, orientationDirectionState) + String.valueOf(nextImage) + ".png")));
-                            opponentBoardPanel.getOpponentBoard("position").getOccupiedCells().put(opponentBoardPanel.getOpponentBoard("position").getMatrix()[row][pic], 1);
-                            opponentBoardPanel.getOpponentBoard("position").getCellShipName().put(opponentBoardPanel.getOpponentBoard("position").getMatrix()[row][pic], ship + String.valueOf(usedShipCount));
-                            relateJLabelShip(opponentBoardPanel.getOpponentBoard("position").getMatrix()[row][pic], ship + String.valueOf(usedShipCount), usedShipCount);
+                            opponentBoardPanel.getTableroOponente("position").getMatriz()[row][pic].setIcon(new ImageIcon(getClass().getResource(pathImages(ship, orientationState, orientationDirectionState) + String.valueOf(nextImage) + ".png")));
+                            opponentBoardPanel.getTableroOponente("position").getBusyBox().put(opponentBoardPanel.getTableroOponente("position").getMatriz()[row][pic], 1);
+                            opponentBoardPanel.getTableroOponente("position").getBoxNameShip().put(opponentBoardPanel.getTableroOponente("position").getMatriz()[row][pic], ship + String.valueOf(usedShipCount));
+                            relateJLabelShip(opponentBoardPanel.getTableroOponente("position").getMatriz()[row][pic], ship + String.valueOf(usedShipCount), usedShipCount);
                             nextImage++;
                             aux = true;
                         }
@@ -144,17 +142,17 @@ public class PaintOpponentFleet {
                 }else{
                     nextImage = cellsToUse;
                     for(int cell=col; cell > col-cellsToUse; cell--){
-                        if(opponentBoardPanel.getOpponentBoard("position").getOccupiedCells().get(opponentBoardPanel.getOpponentBoard("position").getMatrix()[row][cell]) == Integer.valueOf(1)) {
+                        if(opponentBoardPanel.getTableroOponente("position").getBusyBox().get(opponentBoardPanel.getTableroOponente("position").getMatriz()[row][cell]) == Integer.valueOf(1)) {
                             usedCells++;
                         }
                     }
 
                     if(usedCells == 0){
                         for(int pic=col; pic > col-cellsToUse; pic--){
-                            opponentBoardPanel.getOpponentBoard("position").getMatrix()[row][pic].setIcon(new ImageIcon(getClass().getResource(pathImages(ship, orientationState, orientationDirectionState) + String.valueOf(nextImage) + ".png")));
-                            opponentBoardPanel.getOpponentBoard("position").getOccupiedCells().put(opponentBoardPanel.getOpponentBoard("position").getMatrix()[row][pic], 1);
-                            opponentBoardPanel.getOpponentBoard("position").getCellShipName().put(opponentBoardPanel.getOpponentBoard("position").getMatrix()[row][pic], ship + String.valueOf(usedShipCount));
-                            relateJLabelShip(opponentBoardPanel.getOpponentBoard("position").getMatrix()[row][pic], ship + String.valueOf(usedShipCount), usedShipCount);
+                            opponentBoardPanel.getTableroOponente("position").getMatriz()[row][pic].setIcon(new ImageIcon(getClass().getResource(pathImages(ship, orientationState, orientationDirectionState) + String.valueOf(nextImage) + ".png")));
+                            opponentBoardPanel.getTableroOponente("position").getBusyBox().put(opponentBoardPanel.getTableroOponente("position").getMatriz()[row][pic], 1);
+                            opponentBoardPanel.getTableroOponente("position").getBoxNameShip().put(opponentBoardPanel.getTableroOponente("position").getMatriz()[row][pic], ship + String.valueOf(usedShipCount));
+                            relateJLabelShip(opponentBoardPanel.getTableroOponente("position").getMatriz()[row][pic], ship + String.valueOf(usedShipCount), usedShipCount);
                             nextImage--;
                             aux = true;
                         }
@@ -180,17 +178,17 @@ public class PaintOpponentFleet {
                 if(orientationDirectionState == 1){
                     nextImage = 1;
                     for(int cell=row; cell < row+cellsToUse; cell++){
-                        if(opponentBoardPanel.getOpponentBoard("position").getOccupiedCells().get(opponentBoardPanel.getOpponentBoard("position").getMatrix()[cell][col]) == Integer.valueOf(1)) {
+                        if(opponentBoardPanel.getTableroOponente("position").getBusyBox().get(opponentBoardPanel.getTableroOponente("position").getMatriz()[cell][col]) == Integer.valueOf(1)) {
                             usedCells++;
                         }
                     }
 
                     if(usedCells == 0){
                         for(int pic=row; pic < row+cellsToUse; pic++){
-                            opponentBoardPanel.getOpponentBoard("position").getMatrix()[pic][col].setIcon(new ImageIcon(getClass().getResource(pathImages(ship, orientationState, orientationDirectionState) + String.valueOf(nextImage) + ".png")));
-                            opponentBoardPanel.getOpponentBoard("position").getOccupiedCells().put(opponentBoardPanel.getOpponentBoard("position").getMatrix()[pic][col], 1);
-                            opponentBoardPanel.getOpponentBoard("position").getCellShipName().put(opponentBoardPanel.getOpponentBoard("position").getMatrix()[pic][col], ship + String.valueOf(usedShipCount));
-                            relateJLabelShip(opponentBoardPanel.getOpponentBoard("position").getMatrix()[pic][col], ship + String.valueOf(usedShipCount), usedShipCount);
+                            opponentBoardPanel.getTableroOponente("position").getMatriz()[pic][col].setIcon(new ImageIcon(getClass().getResource(pathImages(ship, orientationState, orientationDirectionState) + String.valueOf(nextImage) + ".png")));
+                            opponentBoardPanel.getTableroOponente("position").getBusyBox().put(opponentBoardPanel.getTableroOponente("position").getMatriz()[pic][col], 1);
+                            opponentBoardPanel.getTableroOponente("position").getBoxNameShip().put(opponentBoardPanel.getTableroOponente("position").getMatriz()[pic][col], ship + String.valueOf(usedShipCount));
+                            relateJLabelShip(opponentBoardPanel.getTableroOponente("position").getMatriz()[pic][col], ship + String.valueOf(usedShipCount), usedShipCount);
                             nextImage++;
                             aux = true;
                         }
@@ -201,17 +199,17 @@ public class PaintOpponentFleet {
                 }else{
                     nextImage = cellsToUse;
                     for(int cell=row; cell > row-cellsToUse; cell--){
-                        if(opponentBoardPanel.getOpponentBoard("position").getOccupiedCells().get(opponentBoardPanel.getOpponentBoard("position").getMatrix()[cell][col]) == Integer.valueOf(1)) {
+                        if(opponentBoardPanel.getTableroOponente("position").getBusyBox().get(opponentBoardPanel.getTableroOponente("position").getMatriz()[cell][col]) == Integer.valueOf(1)) {
                             usedCells++;
                         }
                     }
 
                     if(usedCells == 0){
                         for(int pic=row; pic > row-cellsToUse; pic--){
-                            opponentBoardPanel.getOpponentBoard("position").getMatrix()[pic][col].setIcon(new ImageIcon(getClass().getResource(pathImages(ship, orientationState, orientationDirectionState) + String.valueOf(nextImage) + ".png")));
-                            opponentBoardPanel.getOpponentBoard("position").getOccupiedCells().put(opponentBoardPanel.getOpponentBoard("position").getMatrix()[pic][col], 1);
-                            opponentBoardPanel.getOpponentBoard("position").getCellShipName().put(opponentBoardPanel.getOpponentBoard("position").getMatrix()[pic][col], ship + String.valueOf(usedShipCount));
-                            relateJLabelShip(opponentBoardPanel.getOpponentBoard("position").getMatrix()[pic][col], ship + String.valueOf(usedShipCount), usedShipCount);
+                            opponentBoardPanel.getTableroOponente("position").getMatriz()[pic][col].setIcon(new ImageIcon(getClass().getResource(pathImages(ship, orientationState, orientationDirectionState) + String.valueOf(nextImage) + ".png")));
+                            opponentBoardPanel.getTableroOponente("position").getBusyBox().put(opponentBoardPanel.getTableroOponente("position").getMatriz()[pic][col], 1);
+                            opponentBoardPanel.getTableroOponente("position").getBoxNameShip().put(opponentBoardPanel.getTableroOponente("position").getMatriz()[pic][col], ship + String.valueOf(usedShipCount));
+                            relateJLabelShip(opponentBoardPanel.getTableroOponente("position").getMatriz()[pic][col], ship + String.valueOf(usedShipCount), usedShipCount);
                             nextImage--;
                             aux = true;
                         }

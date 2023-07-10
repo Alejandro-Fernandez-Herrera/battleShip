@@ -10,7 +10,7 @@ import java.awt.*;
  * @date 2023-07-03
  */
 
-public class BoardUser extends JPanel {
+public class BoardUserPanel extends JPanel {
 
     private JLabel positionBoardLabel, mainBoardLabel, paintShotsLabel;
     private BackgroundPane positionPanel, mainPanel;
@@ -18,7 +18,7 @@ public class BoardUser extends JPanel {
     private String[] columnLetters;
 
 
-    public BoardUser() {
+    public BoardUserPanel() {
         GridBagLayout layout = new GridBagLayout();
         this.setLayout(layout);
         this.setBackground(Color.BLUE);
@@ -67,7 +67,7 @@ public class BoardUser extends JPanel {
         this.add(mainPanel, gbc);
 
         paintShotsLabel = new JLabel();
-        paintShotsLabel.setIcon(new ImageIcon(getClass().getResource("/BattleShip_Game/Resources/Shot.png")));
+        //paintShotsLabel.setIcon(new ImageIcon(getClass().getResource("/BattleShip_Game/Resources/Shot.png")));
         gbc.gridx = 1;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
@@ -80,7 +80,7 @@ public class BoardUser extends JPanel {
         private Image image;
 
         public BackgroundPane() {
-            image = new ImageIcon(getClass().getResource("/BattleShip_Game/Resources/SeaBackground.png")).getImage();
+            //image = new ImageIcon(getClass().getResource("/BattleShip_Game/Resources/SeaBackground.png")).getImage();
             this.setLayout(new GridLayout(11, 11));
             this.setPreferredSize(new Dimension(400, 400));
             this.setBorder(BorderFactory.createLineBorder(Color.BLACK));

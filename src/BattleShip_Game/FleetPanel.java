@@ -7,7 +7,7 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import java.awt.*;
-public class navyPanel extends JPanel{
+public class FleetPanel extends JPanel{
     public static final String PATH = "/resources/";
     private JButton aircraftCarrier, destroyer, frigate, submarine, vertical, horizontal, topBottom, bottomTop, leftRight, rightLeft, buttonExplanation;
     private JPanel fleetPanel, gameInfoPanel, buttonPanel, subButtonPanel, subButtonPanel2;
@@ -24,7 +24,7 @@ public class navyPanel extends JPanel{
     private int destroyerCount;
     private int frigateCount;
 
-    public PanelFleet() {
+    public FleetPanel() {
         GridBagLayout gridBagLayout = new GridBagLayout();
         this.setLayout(gridBagLayout);
         this.setBackground(Color.CYAN);
@@ -46,10 +46,10 @@ public class navyPanel extends JPanel{
         frigateCount = 4;
 
         // Images
-        destroyerImage = new ImageIcon(getClass().getResource(PATH + "destroyer.png"));
-        aircraftCarrierImage = new ImageIcon(getClass().getResource(PATH + "aircraftCarrier.png"));
-        frigateImage = new ImageIcon(getClass().getResource(PATH + "frigate.png"));
-        submarineImage = new ImageIcon(getClass().getResource(PATH + "submarine.png"));
+        //destroyerImage = new ImageIcon(getClass().getResource(PATH + "destroyer.png"));
+        //aircraftCarrierImage = new ImageIcon(getClass().getResource(PATH + "aircraftCarrier.png"));
+        //frigateImage = new ImageIcon(getClass().getResource(PATH + "frigate.png"));
+        //submarineImage = new ImageIcon(getClass().getResource(PATH + "submarine.png"));
 
         // Aircraft Carrier button
         aircraftCarrier = new JButton();
@@ -218,131 +218,154 @@ public class navyPanel extends JPanel{
         subButtonPanel2.add(leftRight);
         subButtonPanel2.add(rightLeft);
         buttonPanel.add(subButtonPanel2, BorderLayout.EAST);
+    }
 
 // Returns the specified ship button
-    public JButton getShipButton(String ship){
+    public JButton getShipButton (String ship){
         JButton button = new JButton();
         if (ship.equals("aircraftCarrier")) {
             button = aircraftCarrier;
-        } else {
+        }else{
             if (ship.equals("submarine")) {
                 button = submarine;
-            } else {
+            }else{
                 if (ship.equals("destroyer")) {
                     button = destroyer;
-                } else {
+                }else{
                     if (ship.equals("frigate")) {
                         button = frigate;
-                        }
                     }
                 }
             }
+        }
         return button;
     }
 
 // Returns the specified orientation button
-        public JButton getOrientationButton(String orientation) {
-            JButton button = new JButton();
-            if (orientation.equals("vertical")) {
-                button = vertical;
-            } else if (orientation.equals("horizontal")) {
+    public JButton getOrientationButton (String orientation){
+        JButton button = new JButton();
+        if (orientation.equals("vertical")) {
+            button = vertical;
+        }else{
+            if (orientation.equals("horizontal")) {
                 button = horizontal;
             }
-            return button;
         }
+        return button;
+    }
 
 // Returns the specified orientation direction button
-        public JButton getOrientationDirectionButton(String direction) {
-            JButton button = new JButton();
-            if (direction.equals("topBottom")) {
-                button = topBottom;
-            } else if (direction.equals("bottomTop")) {
+    public JButton getOrientationDirectionButton (String direction){
+        JButton button = new JButton();
+        if (direction.equals("topBottom")) {
+            button = topBottom;
+        }else{
+            if (direction.equals("bottomTop")) {
                 button = bottomTop;
-            } else if (direction.equals("leftRight")) {
-                button = leftRight;
-            } else if (direction.equals("rightLeft")) {
-                button = rightLeft;
+            } else{
+                if (direction.equals("leftRight")) {
+                    button = leftRight;
+                } else {
+                    if (direction.equals("rightLeft")) {
+                        button = rightLeft;
+                    }
+                }
             }
-            return button;
         }
+        return button;
+    }
 
 // Sets the name of the pressed button
-        public void setButtonName(String _buttonName) {
-            buttonName = _buttonName;
-        }
+    public void setButtonName (String _buttonName){
+        buttonName = _buttonName;
+    }
 
 // Returns the name of the pressed ship button
-        public String getButtonName() {
-            return buttonName;
-        }
+    public String getButtonName () {
+        return buttonName;
+    }
 
 // Sets the orientation state
-        public void setOrientation(int _orientation) {
-            orientation = _orientation;
-        }
+    public void setOrientation ( int _orientation){
+        orientation = _orientation;
+    }
 
 // Sets the orientation direction state
-        public void setOrientationDirection(int _orientationDirection) {
-            orientationDirection = _orientationDirection;
-        }
+    public void setOrientationDirection ( int _orientationDirection){
+        orientationDirection = _orientationDirection;
+    }
 
 // Returns the orientation state
-        public int getOrientation() {
-            return orientation;
-        }
+    public int getOrientation () {
+        return orientation;
+    }
 
 // Returns the orientation direction state
-        public int getOrientationDirection() {
-            return orientationDirection;
-        }
+    public int getOrientationDirection () {
+        return orientationDirection;
+    }
 
 // Decreases the available quantity of the specified ship
-        public void decreaseShipQuantity(String ship) {
-            if (ship.equals("aircraftCarrier")) {
-                aircraftCarrierCount--;
-            } else if (ship.equals("submarine")) {
+    public void decreaseShipQuantity (String ship){
+        if (ship.equals("aircraftCarrier")) {
+            aircraftCarrierCount--;
+        } else {
+            if (ship.equals("submarine")) {
                 submarineCount--;
-            } else if (ship.equals("destroyer")) {
-                destroyerCount--;
-            } else if (ship.equals("frigate")) {
-                frigateCount--;
+            } else {
+                if (ship.equals("destroyer")) {
+                    destroyerCount--;
+                } else {
+                    if (ship.equals("frigate")) {
+                        frigateCount--;
+                    }
+                }
             }
-        }
-
-// Returns the available quantity of the specified ship
-        public int getShipQuantity(String ship) {
-            int quantity = 0;
-            if (ship.equals("aircraftCarrier")) {
-                quantity = aircraftCarrierCount;
-            } else if (ship.equals("submarine")) {
-                quantity = submarineCount;
-            } else if (ship.equals("destroyer")) {
-                quantity = destroyerCount;
-            } else if (ship.equals("frigate")) {
-                quantity = frigateCount;
-            }
-            return quantity;
-        }
-
-// Returns the total quantity of available ships
-        public int getTotalShipQuantity() {
-            return aircraftCarrierCount + submarineCount + destroyerCount + frigateCount;
-        }
-
-// Returns the JTextPane to edit game information
-        public JTextPane getGameInformation() {
-            return gameInformation;
-        }
-
-// Returns the JLabel to edit the turn assignment
-        public JLabel getAssignTurn() {
-            return assignTurn;
-        }
-
-// Returns the button that explains the button dynamics
-        public JButton getButtonExplanation() {
-            return buttonExplanation;
         }
     }
+
+
+// Returns the available quantity of the specified ship
+    public int getShipQuantity (String ship){
+        int quantity = 0;
+        if (ship.equals("aircraftCarrier")) {
+            quantity = aircraftCarrierCount;
+        } else {
+            if (ship.equals("submarine")) {
+                quantity = submarineCount;
+            } else {
+                if (ship.equals("destroyer")) {
+                    quantity = destroyerCount;
+                } else {
+                    if (ship.equals("frigate")) {
+                        quantity = frigateCount;
+                    }
+                }
+            }
+        }
+        return quantity;
+    }
+
+// Returns the total quantity of available ships
+    public int getTotalShipQuantity () {
+        return aircraftCarrierCount + submarineCount + destroyerCount + frigateCount;
+    }
+
+// Returns the JTextPane to edit game information
+    public JTextPane getGameInformation () {
+        return gameInformation;
+    }
+
+
+// Returns the JLabel to edit the turn assignment
+    public JLabel getAssignTurn () {
+        return assignTurn;
+    }
+
+// Returns the button that explains the button dynamics
+    public JButton getButtonExplanation () {
+        return buttonExplanation;
+    }
+}
 
 
