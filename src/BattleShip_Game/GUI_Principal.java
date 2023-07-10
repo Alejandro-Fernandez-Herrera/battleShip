@@ -276,18 +276,18 @@ public class GUI_Principal extends JFrame {
         }
     }
 
-    // Agrega o remueve el escucha a cada uno de los JLabel de la matriz posicion de PintarTablero
+    // Agrega o remueve el escucha a cada uno de los JLabel de la matriz position de PintarTablero
     public void setEscuchaCasillas(String evento) {
         if (evento == "agregar") {
-            for (int row = 0; row < panelBoard.getBoard("posicion").getMatriz().length; row++) {
-                for (int col = 0; col < panelBoard.getBoard("posicion").getMatriz()[row].length; col++) {
-                    panelBoard.getBoard("posicion").getMatriz()[row][col].addMouseListener(listener);
+            for (int row = 0; row < panelBoard.getBoard("position").getMatriz().length; row++) {
+                for (int col = 0; col < panelBoard.getBoard("position").getMatriz()[row].length; col++) {
+                    panelBoard.getBoard("position").getMatriz()[row][col].addMouseListener(listener);
                 }
             }
         } else {
-            for (int row = 0; row < panelBoard.getBoard("posicion").getMatriz().length; row++) {
-                for (int col = 0; col < panelBoard.getBoard("posicion").getMatriz()[row].length; col++) {
-                    panelBoard.getBoard("posicion").getMatriz()[row][col].removeMouseListener(listener);
+            for (int row = 0; row < panelBoard.getBoard("position").getMatriz().length; row++) {
+                for (int col = 0; col < panelBoard.getBoard("position").getMatriz()[row].length; col++) {
+                    panelBoard.getBoard("position").getMatriz()[row][col].removeMouseListener(listener);
                 }
             }
         }
@@ -312,24 +312,24 @@ public class GUI_Principal extends JFrame {
 
     // Identifica si hay un barco en la casilla del tablero principal para hundirlo
     public void funcionesCombate(int row, int col, String barco) {
-        // Establece una imagen a la casilla seleccionada del tablero principal del usuario y del tablero posicion del oponente si un barco fue tocado
-        opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/tocado.png")));
+        // Establece una imagen a la casilla seleccionada del tablero principal del usuario y del tablero position del oponente si un barco fue tocado
+        opponentWindow.getPanelTableroOponente().getTableroOponente("position").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/tocado.png")));
         panelBoard.getBoard("principal").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/tocado.png")));
         panelBoard.getBoard("principal").getBusyBox().replace(panelBoard.getBoard("principal").getMatriz()[row][col], Integer.valueOf(2));
 
         // Reduce las casillas ocupadas del barco tocado para poder ser hundido
-        opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").DamageShip(barco);
+        opponentWindow.getPanelTableroOponente().getTableroOponente("position").DamageShip(barco);
 
         // Si no hay mas casillas ocupadas, el barco se hunde y se establecen las imagenes respectivas
-        if (opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getBoxShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[row][col]) == Integer.valueOf(0)) {
+        if (opponentWindow.getPanelTableroOponente().getTableroOponente("position").getBoxShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("position").getMatriz()[row][col]) == Integer.valueOf(0)) {
             navyPanel.getGameInformation().setText("Barco hundido, selecciona otra casilla");
             gameState = 5;
             sunkCounter++;
             for (int fil = 1; fil < 11; fil++) {
                 for (int colu = 1; colu < 11; colu++) {
-                    if (opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getBoxNameShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[fil][colu]) != null) {
-                        if (opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getBoxNameShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[fil][colu]).equals(barco)) {
-                            opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[fil][colu].setIcon(new ImageIcon(getClass().getResource("/Resources/hundido.png")));
+                    if (opponentWindow.getPanelTableroOponente().getTableroOponente("position").getBoxNameShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("position").getMatriz()[fil][colu]) != null) {
+                        if (opponentWindow.getPanelTableroOponente().getTableroOponente("position").getBoxNameShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("position").getMatriz()[fil][colu]).equals(barco)) {
+                            opponentWindow.getPanelTableroOponente().getTableroOponente("position").getMatriz()[fil][colu].setIcon(new ImageIcon(getClass().getResource("/Resources/hundido.png")));
                             panelBoard.getBoard("principal").getMatriz()[fil][colu].setIcon(new ImageIcon(getClass().getResource("/Resources/hundido.png")));
                         }
                     } else {
@@ -526,7 +526,7 @@ public class GUI_Principal extends JFrame {
                 case 4:
                     for (int row = 1; row < 11; row++) {
                         for (int col = 1; col < 11; col++) {
-                            if (e.getSource() == panelBoard.getBoard("posicion").getMatriz()[row][col]) {
+                            if (e.getSource() == panelBoard.getBoard("position").getMatriz()[row][col]) {
                                 // Condicional para saber si el usuario pudo colocar el barco
                                 if (paintUserFleet.shipFunctions(navyPanel.getButtonName(), navyPanel.getOrientation(), navyPanel.getOrientationDirection(), col, row)) {
                                     if (navyPanel.getTotalShipQuantity() > 0) {
@@ -559,21 +559,21 @@ public class GUI_Principal extends JFrame {
                                 // Verifica si la casilla seleccionada hay un barco oponente
                                 if (panelBoard.getBoard("principal").getBusyBox().get(panelBoard.getBoard("principal").getMatriz()[row][col]) == Integer.valueOf(1)) {
                                     // Verifica si todas las casillas del barco fueron seleccionadas
-                                    if (opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getBoxShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[row][col]) != Integer.valueOf(0)) {
+                                    if (opponentWindow.getPanelTableroOponente().getTableroOponente("position").getBoxShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("position").getMatriz()[row][col]) != Integer.valueOf(0)) {
                                         for (int num = 1; num < 11; num++) {
-                                            if (opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getBoxNameShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[row][col]).equals("portavion" + String.valueOf(num))) {
+                                            if (opponentWindow.getPanelTableroOponente().getTableroOponente("position").getBoxNameShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("position").getMatriz()[row][col]).equals("portavion" + String.valueOf(num))) {
                                                 funcionesCombate(row, col, "portavion" + String.valueOf(num));
                                                 break;
                                             } else {
-                                                if (opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getBoxNameShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[row][col]).equals("submarino" + String.valueOf(num))) {
+                                                if (opponentWindow.getPanelTableroOponente().getTableroOponente("position").getBoxNameShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("position").getMatriz()[row][col]).equals("submarino" + String.valueOf(num))) {
                                                     funcionesCombate(row, col, "submarino" + String.valueOf(num));
                                                     break;
                                                 } else {
-                                                    if (opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getBoxNameShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[row][col]).equals("destructor" + String.valueOf(num))) {
+                                                    if (opponentWindow.getPanelTableroOponente().getTableroOponente("position").getBoxNameShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("position").getMatriz()[row][col]).equals("destructor" + String.valueOf(num))) {
                                                         funcionesCombate(row, col, "destructor" + String.valueOf(num));
                                                         break;
                                                     } else {
-                                                        if (opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getBoxNameShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[row][col]).equals("fragata" + String.valueOf(num))) {
+                                                        if (opponentWindow.getPanelTableroOponente().getTableroOponente("position").getBoxNameShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("position").getMatriz()[row][col]).equals("fragata" + String.valueOf(num))) {
                                                             funcionesCombate(row, col, "fragata" + String.valueOf(num));
                                                             break;
                                                         }
@@ -589,7 +589,7 @@ public class GUI_Principal extends JFrame {
                                     } else {
                                         navyPanel.getGameInformation().setText("Le diste al agua, espera el turno del oponente");
                                         panelBoard.getBoard("principal").getBusyBox().put(panelBoard.getBoard("principal").getMatriz()[row][col], Integer.valueOf(2));
-                                        opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/agua.png")));
+                                        opponentWindow.getPanelTableroOponente().getTableroOponente("position").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/agua.png")));
                                         panelBoard.getBoard("principal").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/agua.png")));
                                         gameState = 6;
                                         navyPanel.getAssignTurn().setText("¡Turno del oponente!");

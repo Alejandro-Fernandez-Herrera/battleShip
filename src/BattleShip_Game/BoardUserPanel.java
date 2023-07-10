@@ -149,7 +149,7 @@ public class BoardUserPanel extends JPanel {
 
     public ModelBoard getBoard(String _board) {
         ModelBoard board = new ModelBoard();
-        if (_board.equals("Posición")) {
+        if (_board.equals("position")) {
             board = positionBoard;
         } else {
             if (_board.equals("Principal")) {

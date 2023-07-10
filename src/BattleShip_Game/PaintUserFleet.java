@@ -44,19 +44,19 @@ public class PaintUserFleet {
 
     // Relates the cell and the number of cells used by the entered ship
     public void relateJLabelShip(JLabel cell, String ship, int shipNumber) {
-        if (ship.equals("carrier" + String.valueOf(shipNumber))) {
+        if (ship.equals("portavion" + String.valueOf(shipNumber))) {
             usedShipCells.add(4);
             boardPanel.getBoard("position").getBoxShip().put(cell, usedShipCells.get(usedShipCells.size() - 1));
         } else {
-            if (ship.equals("submarine" + String.valueOf(shipNumber))) {
+            if (ship.equals("submarino" + String.valueOf(shipNumber))) {
                 usedShipCells.add(3);
                 boardPanel.getBoard("position").getBoxShip().put(cell, usedShipCells.get(usedShipCells.size() - 1));
             } else {
-                if (ship.equals("destroyer" + String.valueOf(shipNumber))) {
+                if (ship.equals("destructor" + String.valueOf(shipNumber))) {
                     usedShipCells.add(2);
                     boardPanel.getBoard("position").getBoxShip().put(cell, usedShipCells.get(usedShipCells.size() - 1));
                 } else {
-                    if (ship.equals("frigate" + String.valueOf(shipNumber))) {
+                    if (ship.equals("fragata" + String.valueOf(shipNumber))) {
                         usedShipCells.add(1);
                         boardPanel.getBoard("position").getBoxShip().put(cell, usedShipCells.get(usedShipCells.size() - 1));
                     }
@@ -74,13 +74,13 @@ public class PaintUserFleet {
         int nextImage; // Accumulator to show the images in order
         boolean aux = false; // false if the ship cannot be placed, otherwise true
 
-        if (ship.equals("carrier")) {
+        if (ship.equals("portavion")) {
             cellsToUse = 4;
         } else {
-            if (ship.equals("submarine")) {
+            if (ship.equals("submarino")) {
                 cellsToUse = 3;
             } else {
-                if (ship.equals("destroyer")) {
+                if (ship.equals("destructor")) {
                     cellsToUse = 2;
                 } else {
                     cellsToUse = 1;

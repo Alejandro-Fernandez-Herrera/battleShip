@@ -127,7 +127,7 @@ public class BoardComputerPanel extends JPanel {
     // Retorna el tablero ingresado
     public ModelBoard getTableroOponente(String _tablero){
         ModelBoard tablero = new ModelBoard();
-        if(_tablero.equals("posicion")){
+        if(_tablero.equals("position")){
             tablero = tableroPosicionOponente;
         }else{
             if(_tablero.equals("principal")){

@@ -20,7 +20,7 @@ public class Combat {
     public void userVsOpponent(){
         for(int row = 1; row < 11; row++) {
             for (int col = 1; col < 11; col++) {
-                if(opponentBoardPanel.getTableroOponente("posicion").getBusyBox().get(opponentBoardPanel.getTableroOponente("posicion").getMatriz()[row][col]) == Integer.valueOf(1)){
+                if(opponentBoardPanel.getTableroOponente("position").getBusyBox().get(opponentBoardPanel.getTableroOponente("position").getMatriz()[row][col]) == Integer.valueOf(1)){
                     userBoardPanel.getBoard("main").getBusyBox().put(userBoardPanel.getBoard("main").getMatriz()[row][col], 1);
                 }
             }
@@ -31,7 +31,7 @@ public class Combat {
     public void opponentVsUser(){
         for(int row = 1; row < 11; row++) {
             for (int col = 1; col < 11; col++) {
-                if(userBoardPanel.getBoard("posicion").getBusyBox().get(userBoardPanel.getBoard("posicion").getMatriz()[row][col]) == Integer.valueOf(1)){
+                if(userBoardPanel.getBoard("position").getBusyBox().get(userBoardPanel.getBoard("position").getMatriz()[row][col]) == Integer.valueOf(1)){
                     opponentBoardPanel.getTableroOponente("main").getBusyBox().put(opponentBoardPanel.getTableroOponente("main").getMatriz()[row][col], 1);
                 }
             }

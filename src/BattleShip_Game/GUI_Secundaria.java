@@ -74,18 +74,18 @@ public class GUI_Secundaria extends JFrame {
         // Verifies if the selected cell contains a user's ship
         if (panelTableroOponenteR.getTableroOponente("principal").getBusyBox().get(panelTableroOponenteR.getTableroOponente("principal").getMatriz()[row][col]) == Integer.valueOf(1)) {
             // Verifies if all cells of the ship have been selected
-            if (guiPrincipal.getPanelTablero().getBoard("posicion").getBoxShip().get(guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[row][col]) != Integer.valueOf(0)) {
+            if (guiPrincipal.getPanelTablero().getBoard("position").getBoxShip().get(guiPrincipal.getPanelTablero().getBoard("position").getMatriz()[row][col]) != Integer.valueOf(0)) {
                 for (int num = 1; num < 11; num++) {
-                    if (guiPrincipal.getPanelTablero().getBoard("posicion").getBoxNameShip().get(guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[row][col]).equals("portavion" + String.valueOf(num))) {
+                    if (guiPrincipal.getPanelTablero().getBoard("position").getBoxNameShip().get(guiPrincipal.getPanelTablero().getBoard("position").getMatriz()[row][col]).equals("portavion" + String.valueOf(num))) {
                         funcionesCombate(row, col, "portavion" + String.valueOf(num));
                         break;
-                    } else if (guiPrincipal.getPanelTablero().getBoard("posicion").getBoxNameShip().get(guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[row][col]).equals("submarino" + String.valueOf(num))) {
+                    } else if (guiPrincipal.getPanelTablero().getBoard("position").getBoxNameShip().get(guiPrincipal.getPanelTablero().getBoard("position").getMatriz()[row][col]).equals("submarino" + String.valueOf(num))) {
                         funcionesCombate(row, col, "submarino" + String.valueOf(num));
                         break;
-                    } else if (guiPrincipal.getPanelTablero().getBoard("posicion").getBoxNameShip().get(guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[row][col]).equals("destructor" + String.valueOf(num))) {
+                    } else if (guiPrincipal.getPanelTablero().getBoard("position").getBoxNameShip().get(guiPrincipal.getPanelTablero().getBoard("position").getMatriz()[row][col]).equals("destructor" + String.valueOf(num))) {
                         funcionesCombate(row, col, "destructor" + String.valueOf(num));
                         break;
-                    } else if (guiPrincipal.getPanelTablero().getBoard("posicion").getBoxNameShip().get(guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[row][col]).equals("fragata" + String.valueOf(num))) {
+                    } else if (guiPrincipal.getPanelTablero().getBoard("position").getBoxNameShip().get(guiPrincipal.getPanelTablero().getBoard("position").getMatriz()[row][col]).equals("fragata" + String.valueOf(num))) {
                         funcionesCombate(row, col, "fragata" + String.valueOf(num));
                         break;
                     }
@@ -96,7 +96,7 @@ public class GUI_Secundaria extends JFrame {
                 oponenteVsUsuario();
             } else {
                 panelTableroOponenteR.getTableroOponente("principal").getBusyBox().put(panelTableroOponenteR.getTableroOponente("principal").getMatriz()[row][col], Integer.valueOf(2));
-                guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/agua.png")));
+                guiPrincipal.getPanelTablero().getBoard("position").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/agua.png")));
                 panelTableroOponenteR.getTableroOponente("principal").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/agua.png")));
                 estado = 0;
             }
@@ -104,21 +104,21 @@ public class GUI_Secundaria extends JFrame {
     }
     public void funcionesCombate(int row, int col, String barco) {
         // Set an image to the selected cell of the user's position board if a ship was hit
-        guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/tocado.png")));
+        guiPrincipal.getPanelTablero().getBoard("position").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/tocado.png")));
         panelTableroOponenteR.getTableroOponente("principal").getBusyBox().replace(panelTableroOponenteR.getTableroOponente("principal").getMatriz()[row][col], Integer.valueOf(2));
 
         // Reduce the occupied cells of the hit ship to be sunk
-        guiPrincipal.getPanelTablero().getBoard("posicion").DamageShip(barco);
+        guiPrincipal.getPanelTablero().getBoard("position").DamageShip(barco);
 
         // If there are no more occupied cells, the ship is sunk and the respective images are set
-        if (guiPrincipal.getPanelTablero().getBoard("posicion").getBoxShip().get(guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[row][col]) == Integer.valueOf(0)) {
+        if (guiPrincipal.getPanelTablero().getBoard("position").getBoxShip().get(guiPrincipal.getPanelTablero().getBoard("position").getMatriz()[row][col]) == Integer.valueOf(0)) {
             contadorHundidos++;
             estado = 1;
             for (int fil = 1; fil < 11; fil++) {
                 for (int colu = 1; colu < 11; colu++) {
-                    if (guiPrincipal.getPanelTablero().getBoard("posicion").getBoxNameShip().get(guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[fil][colu]) != null) {
-                        if (guiPrincipal.getPanelTablero().getBoard("posicion").getBoxNameShip().get(guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[fil][colu]).equals(barco)) {
-                            guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[fil][colu].setIcon(new ImageIcon(getClass().getResource("/Resources/hundido.png")));
+                    if (guiPrincipal.getPanelTablero().getBoard("position").getBoxNameShip().get(guiPrincipal.getPanelTablero().getBoard("position").getMatriz()[fil][colu]) != null) {
+                        if (guiPrincipal.getPanelTablero().getBoard("position").getBoxNameShip().get(guiPrincipal.getPanelTablero().getBoard("position").getMatriz()[fil][colu]).equals(barco)) {
+                            guiPrincipal.getPanelTablero().getBoard("position").getMatriz()[fil][colu].setIcon(new ImageIcon(getClass().getResource("/Resources/hundido.png")));
                         }
                     } else {
                         continue;
