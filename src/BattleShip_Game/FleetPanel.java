@@ -258,16 +258,16 @@ public class FleetPanel extends JPanel{
 // Returns the specified orientation direction button
     public JButton getOrientationDirectionButton (String direction){
         JButton button = new JButton();
-        if (direction.equals("topBottom")) {
+        if (direction.equals("sup_inf")) {
             button = topBottom;
         }else{
-            if (direction.equals("bottomTop")) {
+            if (direction.equals("inf_sup")) {
                 button = bottomTop;
             } else{
-                if (direction.equals("leftRight")) {
+                if (direction.equals("izq_der")) {
                     button = leftRight;
                 } else {
-                    if (direction.equals("rightLeft")) {
+                    if (direction.equals("der_izq")) {
                         button = rightLeft;
                     }
                 }

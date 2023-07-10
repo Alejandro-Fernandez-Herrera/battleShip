@@ -33,24 +33,14 @@ public class BoardUserPanel extends JPanel {
     public void startGame() {
         GridBagConstraints gbc = new GridBagConstraints();
 
-        positionBoardLabel = new JLabel("Posición de los Barcos");
-        positionBoardLabel.setForeground(Color.WHITE);
-        positionBoardLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        positionBoardLabel = new JLabel("T A B L E R O   P O S I C I O N");
+        positionBoardLabel.setForeground(new Color(0, 0, 0, 230));
+        positionBoardLabel.setFont(new Font(Font.MONOSPACED, Font.BOLD, 15));
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 1;
         gbc.gridheight = 1;
         this.add(positionBoardLabel, gbc);
-
-        // Panel tablero principal
-        mainBoardLabel = new JLabel("Tablero de Juego");
-        mainBoardLabel.setForeground(Color.WHITE);
-        mainBoardLabel.setFont(new Font("Arial", Font.BOLD, 20));
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        gbc.gridwidth = 1;
-        gbc.gridheight = 1;
-        this.add(mainBoardLabel, gbc);
 
         positionPanel = new BackgroundPane();
         gbc.gridx = 0;
@@ -59,6 +49,18 @@ public class BoardUserPanel extends JPanel {
         gbc.gridheight = 1;
         gbc.insets = new Insets(0, 15, 0, 15);
         this.add(positionPanel, gbc);
+
+        // Panel tablero principal
+        mainBoardLabel = new JLabel("T A B L E R O   P R I N C I P A L");
+        mainBoardLabel.setForeground(new Color(0, 0, 0, 230));
+        mainBoardLabel.setFont(new Font(Font.MONOSPACED, Font.BOLD, 15));
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 1;
+        this.add(mainBoardLabel, gbc);
+
+
 
         mainPanel = new BackgroundPane();
         gbc.gridx = 1;
@@ -84,8 +86,8 @@ public class BoardUserPanel extends JPanel {
         public BackgroundPane() {
             image = new ImageIcon(getClass().getResource(PATH + "mar.jpg")).getImage();
             this.setLayout(new GridLayout(11, 11));
-            this.setPreferredSize(new Dimension(300, 300));
-            this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+            this.setPreferredSize(new Dimension(400, 400));
+            this.setBorder(BorderFactory.createLineBorder(Color.white));
         }
 
         @Override

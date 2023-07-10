@@ -175,10 +175,10 @@ public class GUI_Principal extends JFrame {
         southPanel.add(restartButton, FlowLayout.CENTER);
 
         // Add listener to all buttons in all classes
-        setButtonListener("remove");
-        setVerticalHorizontal("remove");
-        setOrientationVertical("remove");
-        setOrientationHorizontal("remove");
+        setButtonListener("remover");
+        setVerticalHorizontal("remover");
+        setOrientationVertical("remover");
+        setOrientationHorizontal("remover");
 
         // Distribute opponent's fleet
         while (opponentWindow.getPintarFlotaOponente().totalShipCount() > 0) {
