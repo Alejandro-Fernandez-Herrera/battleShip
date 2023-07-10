@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 public class GUI_Secundaria extends JFrame {
-    public static final String PATH = "/recursos/";
+    public static final String PATH = "/Resources/";
     private Header titulo;
     private ImageIcon enemyIcon;
     private BoardComputerPanel panelTableroOponenteR;
@@ -19,8 +19,8 @@ public class GUI_Secundaria extends JFrame {
 
         // Default JFrame configuration
         this.setTitle("Batalla Naval");
-        //Image image = new ImageIcon(getClass().getResource(PATH + "barcoIcono.png")).getImage();
-        //this.setIconImage(image);
+        Image image = new ImageIcon(getClass().getResource(PATH + "barcoIcono.png")).getImage();
+        this.setIconImage(image);
         this.setUndecorated(false);
         this.setSize(600, 600);
         this.setResizable(true);
@@ -60,7 +60,7 @@ public class GUI_Secundaria extends JFrame {
         panelSup.add(titulo, FlowLayout.LEFT);
 
         // Icono
-        //enemyIcon = new ImageIcon(getClass().getResource(PATH + "enemy.png"));
+        enemyIcon = new ImageIcon(getClass().getResource(PATH + "enemy.png"));
         JLabel enemy = new JLabel(enemyIcon);
         panelSup.add(enemy, FlowLayout.CENTER);
     }
@@ -96,15 +96,15 @@ public class GUI_Secundaria extends JFrame {
                 oponenteVsUsuario();
             } else {
                 panelTableroOponenteR.getTableroOponente("principal").getBusyBox().put(panelTableroOponenteR.getTableroOponente("principal").getMatriz()[row][col], Integer.valueOf(2));
-                guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/recursos/agua.png")));
-                panelTableroOponenteR.getTableroOponente("principal").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/recursos/agua.png")));
+                guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/agua.png")));
+                panelTableroOponenteR.getTableroOponente("principal").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/agua.png")));
                 estado = 0;
             }
         }
     }
     public void funcionesCombate(int row, int col, String barco) {
         // Set an image to the selected cell of the user's position board if a ship was hit
-        guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/recursos/tocado.png")));
+        guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/tocado.png")));
         panelTableroOponenteR.getTableroOponente("principal").getBusyBox().replace(panelTableroOponenteR.getTableroOponente("principal").getMatriz()[row][col], Integer.valueOf(2));
 
         // Reduce the occupied cells of the hit ship to be sunk
@@ -118,7 +118,7 @@ public class GUI_Secundaria extends JFrame {
                 for (int colu = 1; colu < 11; colu++) {
                     if (guiPrincipal.getPanelTablero().getBoard("posicion").getBoxNameShip().get(guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[fil][colu]) != null) {
                         if (guiPrincipal.getPanelTablero().getBoard("posicion").getBoxNameShip().get(guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[fil][colu]).equals(barco)) {
-                            guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[fil][colu].setIcon(new ImageIcon(getClass().getResource("/recursos/hundido.png")));
+                            guiPrincipal.getPanelTablero().getBoard("posicion").getMatriz()[fil][colu].setIcon(new ImageIcon(getClass().getResource("/Resources/hundido.png")));
                         }
                     } else {
                         continue;
@@ -130,7 +130,7 @@ public class GUI_Secundaria extends JFrame {
         }
 
         if (contadorHundidos == 10) {
-            //guiPrincipal.getPanelFlota().getInformacionJuego().setText("Tus barcos han sido hundidos, perdiste el juego");
+            guiPrincipal.getPanelFlota().getGameInformation().setText("Tus barcos han sido hundidos, perdiste el juego");
             estado = 2;
         }
     }
@@ -141,16 +141,16 @@ public class GUI_Secundaria extends JFrame {
 
         switch (numBarcoAleatorio) {
             case 1:
-                nombreBarco = "portavion";
+                nombreBarco = "aircraftCarrier";
                 break;
             case 2:
-                nombreBarco = "submarino";
+                nombreBarco = "submarine";
                 break;
             case 3:
                 nombreBarco = "destructor";
                 break;
             case 4:
-                nombreBarco = "fragata";
+                nombreBarco = "frigate";
                 break;
         }
 
@@ -174,18 +174,18 @@ public class GUI_Secundaria extends JFrame {
         Random filaAleatoria = new Random();
         int numFilaAleatoria = filaAleatoria.nextInt(10) + 1;
 
-        if (numBarcoAleatorio == 1 && pintarFlotaOponenteR.getShipCount("portavion") > 0) {
+        if (numBarcoAleatorio == 1 && pintarFlotaOponenteR.getShipCount("aircraftCarrier") > 0) {
             if (!pintarFlotaOponenteR.shipFunctions(nombreBarco, numOrientacionAleatoria, numSentidoAleatorio, numColumnaAleatoria, numFilaAleatoria)) {
                 distribucionFlotaOponente();
             } else {
-                pintarFlotaOponenteR.setShipCount("portavion");
+                pintarFlotaOponenteR.setShipCount("aircraftCarrier");
             }
         } else {
-            if (numBarcoAleatorio == 2 && pintarFlotaOponenteR.getShipCount("submarino") > 0) {
+            if (numBarcoAleatorio == 2 && pintarFlotaOponenteR.getShipCount("submarine") > 0) {
                 if (!pintarFlotaOponenteR.shipFunctions(nombreBarco, numOrientacionAleatoria, numSentidoAleatorio, numColumnaAleatoria, numFilaAleatoria)) {
                     distribucionFlotaOponente();
                 } else {
-                    pintarFlotaOponenteR.setShipCount("submarino");
+                    pintarFlotaOponenteR.setShipCount("submarine");
                 }
             } else {
                 if (numBarcoAleatorio == 3 && pintarFlotaOponenteR.getShipCount("destructor") > 0) {
@@ -195,11 +195,11 @@ public class GUI_Secundaria extends JFrame {
                         pintarFlotaOponenteR.setShipCount("destructor");
                     }
                 } else {
-                    if (numBarcoAleatorio == 4 && pintarFlotaOponenteR.getShipCount("fragata") > 0) {
+                    if (numBarcoAleatorio == 4 && pintarFlotaOponenteR.getShipCount("frigate") > 0) {
                         if (!pintarFlotaOponenteR.shipFunctions(nombreBarco, numOrientacionAleatoria, numSentidoAleatorio, numColumnaAleatoria, numFilaAleatoria)) {
                             distribucionFlotaOponente();
                         } else {
-                            pintarFlotaOponenteR.setShipCount("fragata");
+                            pintarFlotaOponenteR.setShipCount("frigate");
                         }
                     }
                 }

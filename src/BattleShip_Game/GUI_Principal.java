@@ -7,13 +7,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-/**
- * @brief Clase principal que inicia la GUI
- * @autor Alejandro Fernández - José David Giraldo
- * @version 1.0.0
- * @date 2023-07-02
- *
- */
 public class GUI_Principal extends JFrame {
 
     public static final String PATH = "/Resources/";
@@ -73,7 +66,7 @@ public class GUI_Principal extends JFrame {
         opponentWindow = new GUI_Secundaria(this);
 
         // JFrame icon
-        image = new ImageIcon(getClass().getResource(PATH + "shipIcon.png")).getImage();
+        image = new ImageIcon(getClass().getResource(PATH + "icon.png")).getImage();
 
         // Set up JFrame Container's Layout
         northPanel = new JPanel();
@@ -114,11 +107,11 @@ public class GUI_Principal extends JFrame {
         // Set up JComponents
         // Images
         team = new ImageIcon(getClass().getResource(PATH + "team.png"));
-        help = new ImageIcon(getClass().getResource(PATH + "sign.png"));
+        help = new ImageIcon(getClass().getResource(PATH + "signo.png"));
         play = new ImageIcon(getClass().getResource(PATH + "play.png"));
         enemy = new ImageIcon(getClass().getResource(PATH + "enemy.png"));
         directionInfo = new ImageIcon(getClass().getResource(PATH + "info.png"));
-        restart = new ImageIcon(getClass().getResource(PATH + "restartIcon.png"));
+        restart = new ImageIcon(getClass().getResource(PATH + "reiniciarIcon.png"));
 
         // JComponents for the top part
         // Title
@@ -320,8 +313,8 @@ public class GUI_Principal extends JFrame {
     // Identifica si hay un barco en la casilla del tablero principal para hundirlo
     public void funcionesCombate(int row, int col, String barco) {
         // Establece una imagen a la casilla seleccionada del tablero principal del usuario y del tablero posicion del oponente si un barco fue tocado
-        opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/recursos/tocado.png")));
-        panelBoard.getBoard("principal").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/recursos/tocado.png")));
+        opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/tocado.png")));
+        panelBoard.getBoard("principal").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/tocado.png")));
         panelBoard.getBoard("principal").getBusyBox().replace(panelBoard.getBoard("principal").getMatriz()[row][col], Integer.valueOf(2));
 
         // Reduce las casillas ocupadas del barco tocado para poder ser hundido
@@ -336,8 +329,8 @@ public class GUI_Principal extends JFrame {
                 for (int colu = 1; colu < 11; colu++) {
                     if (opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getBoxNameShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[fil][colu]) != null) {
                         if (opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getBoxNameShip().get(opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[fil][colu]).equals(barco)) {
-                            opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[fil][colu].setIcon(new ImageIcon(getClass().getResource("/recursos/hundido.png")));
-                            panelBoard.getBoard("principal").getMatriz()[fil][colu].setIcon(new ImageIcon(getClass().getResource("/recursos/hundido.png")));
+                            opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[fil][colu].setIcon(new ImageIcon(getClass().getResource("/Resources/hundido.png")));
+                            panelBoard.getBoard("principal").getMatriz()[fil][colu].setIcon(new ImageIcon(getClass().getResource("/Resources/hundido.png")));
                         }
                     } else {
                         continue;
@@ -596,8 +589,8 @@ public class GUI_Principal extends JFrame {
                                     } else {
                                         navyPanel.getGameInformation().setText("Le diste al agua, espera el turno del oponente");
                                         panelBoard.getBoard("principal").getBusyBox().put(panelBoard.getBoard("principal").getMatriz()[row][col], Integer.valueOf(2));
-                                        opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/recursos/agua.png")));
-                                        panelBoard.getBoard("principal").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/recursos/agua.png")));
+                                        opponentWindow.getPanelTableroOponente().getTableroOponente("posicion").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/agua.png")));
+                                        panelBoard.getBoard("principal").getMatriz()[row][col].setIcon(new ImageIcon(getClass().getResource("/Resources/agua.png")));
                                         gameState = 6;
                                         navyPanel.getAssignTurn().setText("¡Turno del oponente!");
                                         timer.start();

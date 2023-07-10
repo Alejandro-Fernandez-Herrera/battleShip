@@ -56,7 +56,7 @@ public class BoardComputerPanel extends JPanel {
         private Image img;
 
         public BackgroundPane(){
-            //img = new ImageIcon(getClass().getResource("mar.jpg")).getImage();
+            img = new ImageIcon(getClass().getResource("/Resources/mar.jpg")).getImage();
             this.setLayout(new GridLayout(11, 11));
             this.setPreferredSize(new Dimension(400, 400));
             this.setBorder(BorderFactory.createLineBorder(Color.WHITE));

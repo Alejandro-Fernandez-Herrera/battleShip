@@ -46,10 +46,10 @@ public class FleetPanel extends JPanel{
         frigateCount = 4;
 
         // Images
-        //destroyerImage = new ImageIcon(getClass().getResource(PATH + "destroyer.png"));
-        //aircraftCarrierImage = new ImageIcon(getClass().getResource(PATH + "aircraftCarrier.png"));
-        //frigateImage = new ImageIcon(getClass().getResource(PATH + "frigate.png"));
-        //submarineImage = new ImageIcon(getClass().getResource(PATH + "submarine.png"));
+        destroyerImage = new ImageIcon(getClass().getResource(PATH + "destructor.png"));
+        aircraftCarrierImage = new ImageIcon(getClass().getResource(PATH + "aircraftCarrier.png"));
+        frigateImage = new ImageIcon(getClass().getResource(PATH + "frigate.png"));
+        submarineImage = new ImageIcon(getClass().getResource(PATH + "submarine.png"));
 
         // Aircraft Carrier button
         aircraftCarrier = new JButton();
