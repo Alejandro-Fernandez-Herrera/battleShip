@@ -185,7 +185,7 @@ public class PaintComputerFleet {
 
                     if(usedCells == 0){
                         for(int pic=row; pic < row+cellsToUse; pic++){
-                            opponentBoardPanel.getTableroOponente("position").getMatriz()[pic][col].setIcon(new ImageIcon(getClass().getResource(pathImages(ship, orientationState, orientationDirectionState) + String.valueOf(nextImage) + ".png")));
+                            opponentBoardPanel.getTableroOponente("position").getMatriz()[row][pic].setIcon(new ImageIcon(getClass().getResource(pathImages(ship, orientationState, orientationDirectionState) + String.valueOf(nextImage) + ".png")));
                             opponentBoardPanel.getTableroOponente("position").getBusyBox().put(opponentBoardPanel.getTableroOponente("position").getMatriz()[pic][col], 1);
                             opponentBoardPanel.getTableroOponente("position").getBoxNameShip().put(opponentBoardPanel.getTableroOponente("position").getMatriz()[pic][col], ship + String.valueOf(usedShipCount));
                             relateJLabelShip(opponentBoardPanel.getTableroOponente("position").getMatriz()[pic][col], ship + String.valueOf(usedShipCount), usedShipCount);
@@ -225,16 +225,16 @@ public class PaintComputerFleet {
 
     // Changes the available quantity of the entered ship
     public void setShipCount(String ship){
-        if(ship.equals("carrier")){
+        if(ship.equals("portavion")){
             carrierCount--;
         }else{
-            if(ship.equals("submarine")) {
+            if(ship.equals("submarino")) {
                 submarineCount--;
             }else{
-                if(ship.equals("destroyer")) {
+                if(ship.equals("destructor")) {
                     destroyerCount--;
                 }else{
-                    if(ship.equals("frigate")) {
+                    if(ship.equals("fragata")) {
                         frigateCount--;
                     }
                 }
@@ -245,16 +245,16 @@ public class PaintComputerFleet {
     // Returns the available quantity of the entered ship
     public int getShipCount(String ship){
         int count = 0;
-        if(ship.equals("carrier")){
+        if(ship.equals("portavion")){
             count = carrierCount;
         }else{
-            if(ship.equals("submarine")) {
+            if(ship.equals("submarino")) {
                 count = submarineCount;
             }else{
-                if(ship.equals("destroyer")) {
+                if(ship.equals("destructor")) {
                     count = destroyerCount;
                 }else{
-                    if(ship.equals("frigate")) {
+                    if(ship.equals("fragata")) {
                         count = frigateCount;
                     }
                 }
@@ -265,6 +265,7 @@ public class PaintComputerFleet {
 
     // Returns the total number of available ships
     public int totalShipCount(){
+
         return carrierCount + submarineCount + destroyerCount + frigateCount;
     }
 }

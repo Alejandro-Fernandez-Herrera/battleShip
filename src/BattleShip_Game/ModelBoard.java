@@ -39,20 +39,22 @@ public class ModelBoard {
     }
 
     public JLabel[][] getMatriz(){
+
         return Model;
     }
 
     public HashMap getBusyBox(){
+
         return BusyBox;
     }
 
     public HashMap getBoxShip(){
+
         return BoxShip;
     }
 
     public HashMap getBoxNameShip(){
+
         return BoxNameShip;
     }
-
-
 }

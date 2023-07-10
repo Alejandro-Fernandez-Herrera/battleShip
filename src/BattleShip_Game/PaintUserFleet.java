@@ -2,6 +2,13 @@ package BattleShip_Game;
 
 import javax.swing.*;
 import java.util.ArrayList;
+/**
+ * Clase PaintUserFleet
+ @autor Alejandro Fernández - José David Giraldo
+ @version 1.0.0
+ @date 2023-07-09
+ */
+
 public class PaintUserFleet {
     private BoardUserPanel boardPanel;
     private FleetPanel fleetPanel;
@@ -100,7 +107,7 @@ public class PaintUserFleet {
 
             int lastCells = Math.abs(col - referenceColumn);
             if (lastCells < cellsToUse - 1) {
-                aux = false;
+                fleetPanel.getGameInformation().setText("No hay espacio para colocar el " + ship);
             } else {
                 if (orientationDirectionState == 3) {
                     nextImage = 1;
@@ -123,7 +130,7 @@ public class PaintUserFleet {
                         }
                         usedShipCount++;
                     } else {
-                        aux = false;
+                        fleetPanel.getGameInformation().setText("No hay espacio para colocar el " + ship);
                     }
                 } else {
                     nextImage = cellsToUse;
@@ -144,7 +151,7 @@ public class PaintUserFleet {
                         }
                         usedShipCount++;
                     } else {
-                        aux = false;
+                        fleetPanel.getGameInformation().setText("No hay espacio para colocar el " + ship);
                     }
                 }
             }
@@ -159,7 +166,7 @@ public class PaintUserFleet {
 
             int lastCells = Math.abs(row - referenceRow);
             if (lastCells < cellsToUse - 1) {
-                aux = false;
+                fleetPanel.getGameInformation().setText("No hay espacio para colocar el " + ship);
             } else {
                 if (orientationDirectionState == 1) {
                     nextImage = 1;

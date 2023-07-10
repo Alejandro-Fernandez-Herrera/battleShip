@@ -25,7 +25,7 @@ public class GUI_Principal extends JFrame {
             "-> ALEJANDRO FERNANDEZ";
 
     private Header headerProject;
-    private JButton helpButton, creditsButton, startGameButton,opponentMovesButton, enemyMovesButton, restartButton;
+    private JButton helpButton, creditsButton, startGameButton,opponentMovesButton, restartButton;
     private Listener listener;
     private ImageIcon team, help, enemy, play, directionInfo, restart,infoSentidos;
     private JPanel northPanel, southPanel, eastPanel, centerPanel;

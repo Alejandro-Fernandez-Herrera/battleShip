@@ -42,6 +42,7 @@ public class BoardUserPanel extends JPanel {
         gbc.gridheight = 1;
         this.add(positionBoardLabel, gbc);
 
+        // Panel tablero principal
         mainBoardLabel = new JLabel("Tablero de Juego");
         mainBoardLabel.setForeground(Color.WHITE);
         mainBoardLabel.setFont(new Font("Arial", Font.BOLD, 20));
@@ -147,12 +148,13 @@ public class BoardUserPanel extends JPanel {
         }
     }
 
+    // Retorna el tablero ingresado
     public ModelBoard getBoard(String _board) {
         ModelBoard board = new ModelBoard();
         if (_board.equals("position")) {
             board = positionBoard;
         } else {
-            if (_board.equals("Principal")) {
+            if (_board.equals("principal")) {
                 board = mainBoard;
             }
         }

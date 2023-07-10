@@ -130,7 +130,7 @@ public class GUI_Secundaria extends JFrame {
         }
 
         if (contadorHundidos == 10) {
-            guiPrincipal.getPanelFlota().getGameInformation().setText("Tus barcos han sido hundidos, perdiste el juego");
+            //guiPrincipal.getPanelFlota().getGameInformation().setText("Tus barcos han sido hundidos, perdiste el juego");
             estado = 2;
         }
     }
@@ -141,16 +141,16 @@ public class GUI_Secundaria extends JFrame {
 
         switch (numBarcoAleatorio) {
             case 1:
-                nombreBarco = "aircraftCarrier";
+                nombreBarco = "portavion";
                 break;
             case 2:
-                nombreBarco = "submarine";
+                nombreBarco = "submarino";
                 break;
             case 3:
                 nombreBarco = "destructor";
                 break;
             case 4:
-                nombreBarco = "frigate";
+                nombreBarco = "fragata";
                 break;
         }
 
@@ -174,18 +174,18 @@ public class GUI_Secundaria extends JFrame {
         Random filaAleatoria = new Random();
         int numFilaAleatoria = filaAleatoria.nextInt(10) + 1;
 
-        if (numBarcoAleatorio == 1 && pintarFlotaOponenteR.getShipCount("aircraftCarrier") > 0) {
+        if (numBarcoAleatorio == 1 && pintarFlotaOponenteR.getShipCount("portavion") > 0) {
             if (!pintarFlotaOponenteR.shipFunctions(nombreBarco, numOrientacionAleatoria, numSentidoAleatorio, numColumnaAleatoria, numFilaAleatoria)) {
                 distribucionFlotaOponente();
             } else {
-                pintarFlotaOponenteR.setShipCount("aircraftCarrier");
+                pintarFlotaOponenteR.setShipCount("portavion");
             }
         } else {
-            if (numBarcoAleatorio == 2 && pintarFlotaOponenteR.getShipCount("submarine") > 0) {
+            if (numBarcoAleatorio == 2 && pintarFlotaOponenteR.getShipCount("submarino") > 0) {
                 if (!pintarFlotaOponenteR.shipFunctions(nombreBarco, numOrientacionAleatoria, numSentidoAleatorio, numColumnaAleatoria, numFilaAleatoria)) {
                     distribucionFlotaOponente();
                 } else {
-                    pintarFlotaOponenteR.setShipCount("submarine");
+                    pintarFlotaOponenteR.setShipCount("submarino");
                 }
             } else {
                 if (numBarcoAleatorio == 3 && pintarFlotaOponenteR.getShipCount("destructor") > 0) {
@@ -195,11 +195,11 @@ public class GUI_Secundaria extends JFrame {
                         pintarFlotaOponenteR.setShipCount("destructor");
                     }
                 } else {
-                    if (numBarcoAleatorio == 4 && pintarFlotaOponenteR.getShipCount("frigate") > 0) {
+                    if (numBarcoAleatorio == 4 && pintarFlotaOponenteR.getShipCount("fragata") > 0) {
                         if (!pintarFlotaOponenteR.shipFunctions(nombreBarco, numOrientacionAleatoria, numSentidoAleatorio, numColumnaAleatoria, numFilaAleatoria)) {
                             distribucionFlotaOponente();
                         } else {
-                            pintarFlotaOponenteR.setShipCount("frigate");
+                            pintarFlotaOponenteR.setShipCount("fragata");
                         }
                     }
                 }

@@ -60,6 +60,7 @@ public class FleetPanel extends JPanel{
         aircraftCarrier.setVerticalTextPosition(SwingConstants.BOTTOM);
         aircraftCarrier.setFocusable(false);
         aircraftCarrier.setBorder(null);
+
         destroyer = new JButton();
         destroyer.setText("DESTROYER");
         destroyer.setIcon(destroyerImage);
@@ -223,16 +224,16 @@ public class FleetPanel extends JPanel{
 // Returns the specified ship button
     public JButton getShipButton (String ship){
         JButton button = new JButton();
-        if (ship.equals("aircraftCarrier")) {
+        if (ship.equals("portavion")) {
             button = aircraftCarrier;
         }else{
-            if (ship.equals("submarine")) {
+            if (ship.equals("submarino")) {
                 button = submarine;
             }else{
-                if (ship.equals("destroyer")) {
+                if (ship.equals("destructor")) {
                     button = destroyer;
                 }else{
-                    if (ship.equals("frigate")) {
+                    if (ship.equals("fragata")) {
                         button = frigate;
                     }
                 }
@@ -307,16 +308,16 @@ public class FleetPanel extends JPanel{
 
 // Decreases the available quantity of the specified ship
     public void decreaseShipQuantity (String ship){
-        if (ship.equals("aircraftCarrier")) {
+        if (ship.equals("portavion")) {
             aircraftCarrierCount--;
         } else {
-            if (ship.equals("submarine")) {
+            if (ship.equals("submarino")) {
                 submarineCount--;
             } else {
-                if (ship.equals("destroyer")) {
+                if (ship.equals("destructor")) {
                     destroyerCount--;
                 } else {
-                    if (ship.equals("frigate")) {
+                    if (ship.equals("fragata")) {
                         frigateCount--;
                     }
                 }
@@ -328,16 +329,16 @@ public class FleetPanel extends JPanel{
 // Returns the available quantity of the specified ship
     public int getShipQuantity (String ship){
         int quantity = 0;
-        if (ship.equals("aircraftCarrier")) {
+        if (ship.equals("portavion")) {
             quantity = aircraftCarrierCount;
         } else {
-            if (ship.equals("submarine")) {
+            if (ship.equals("submarino")) {
                 quantity = submarineCount;
             } else {
-                if (ship.equals("destroyer")) {
+                if (ship.equals("destructor")) {
                     quantity = destroyerCount;
                 } else {
-                    if (ship.equals("frigate")) {
+                    if (ship.equals("fragata")) {
                         quantity = frigateCount;
                     }
                 }
@@ -348,22 +349,26 @@ public class FleetPanel extends JPanel{
 
 // Returns the total quantity of available ships
     public int getTotalShipQuantity () {
+
         return aircraftCarrierCount + submarineCount + destroyerCount + frigateCount;
     }
 
 // Returns the JTextPane to edit game information
     public JTextPane getGameInformation () {
+
         return gameInformation;
     }
 
 
 // Returns the JLabel to edit the turn assignment
     public JLabel getAssignTurn () {
+
         return assignTurn;
     }
 
 // Returns the button that explains the button dynamics
     public JButton getButtonExplanation () {
+
         return buttonExplanation;
     }
 }
