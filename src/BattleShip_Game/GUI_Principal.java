@@ -27,7 +27,7 @@ public class GUI_Principal extends JFrame {
     private Header headerProject;
     private JButton helpButton, creditsButton, startGameButton,opponentMovesButton, restartButton;
     private Listener listener;
-    private ImageIcon team, help, enemy, play, directionInfo, restart,infoSentidos;
+    private ImageIcon team, help,play, enemy,directionInfo, restart;
     private JPanel northPanel, southPanel, eastPanel, centerPanel;
     private BoardUserPanel panelBoard;
     private PaintUserFleet paintUserFleet;
@@ -75,10 +75,10 @@ public class GUI_Principal extends JFrame {
         centerPanel = new JPanel();
 
         // Create panels
-        northPanel.setBackground(Color.CYAN);
-        southPanel.setBackground(Color.CYAN);
-        eastPanel.setBackground(Color.CYAN);
-        centerPanel.setBackground(Color.CYAN);
+        northPanel.setBackground(Color.lightGray);
+        southPanel.setBackground(Color.lightGray);
+        eastPanel.setBackground(Color.lightGray);
+        centerPanel.setBackground(Color.lightGray);
 
         southPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 250, 5));
         northPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 200, 5));
@@ -107,6 +107,9 @@ public class GUI_Principal extends JFrame {
         // Set up JComponents
         // Images
         team = new ImageIcon(getClass().getResource(PATH + "team.png"));
+        Image image = team.getImage(); // Obtener el objeto Image de ImageIcon
+        Image scaledImage = image.getScaledInstance(50, 50, Image.SCALE_SMOOTH); // Escalar la imagen a las dimensiones deseadas
+        team = new ImageIcon(scaledImage); // Crear un nuevo ImageIcon con la imagen escalada
         help = new ImageIcon(getClass().getResource(PATH + "signo.png"));
         play = new ImageIcon(getClass().getResource(PATH + "play.png"));
         enemy = new ImageIcon(getClass().getResource(PATH + "enemy.png"));
@@ -115,13 +118,13 @@ public class GUI_Principal extends JFrame {
 
         // JComponents for the top part
         // Title
-        headerProject = new Header("B A T T L E S H I P", Color.CYAN);
+        headerProject = new Header("B A T T L E S H I P", Color.lightGray);
         northPanel.add(headerProject, FlowLayout.LEFT);
 
         // Create help button
         helpButton = new JButton("", help);
         helpButton.addActionListener(listener);
-        helpButton.setBackground(Color.CYAN);
+        helpButton.setBackground(Color.lightGray);
         helpButton.setFocusable(false);
         helpButton.setBorder(null);
         northPanel.add(helpButton, FlowLayout.CENTER);
@@ -129,7 +132,7 @@ public class GUI_Principal extends JFrame {
         // Create credits button
         creditsButton = new JButton("", team);
         creditsButton.addActionListener(listener);
-        creditsButton.setBackground(Color.CYAN);
+        creditsButton.setBackground(Color.lightGray);
         creditsButton.setFocusable(false);
         creditsButton.setBorder(null);
         northPanel.add(creditsButton, FlowLayout.LEFT);
@@ -150,7 +153,7 @@ public class GUI_Principal extends JFrame {
         // Create "Start Game" button
         startGameButton = new JButton("Start Game", play);
         startGameButton.addActionListener(listener);
-        startGameButton.setBackground(Color.CYAN);
+        startGameButton.setBackground(Color.lightGray);
         startGameButton.setFocusable(false);
         startGameButton.setBorder(null);
         southPanel.add(startGameButton, FlowLayout.LEFT);
@@ -158,7 +161,7 @@ public class GUI_Principal extends JFrame {
         // Create "Opponent's Moves" button
         opponentMovesButton = new JButton("Opponent's Moves", enemy);
         opponentMovesButton.addActionListener(listener);
-        opponentMovesButton.setBackground(Color.CYAN);
+        opponentMovesButton.setBackground(Color.lightGray);
         opponentMovesButton.setFocusable(false);
         opponentMovesButton.setBorder(null);
         southPanel.add(opponentMovesButton, FlowLayout.CENTER);
@@ -166,7 +169,7 @@ public class GUI_Principal extends JFrame {
         // Create "Restart" button
         restartButton = new JButton("Restart", restart);
         restartButton.addActionListener(listener);
-        restartButton.setBackground(Color.CYAN);
+        restartButton.setBackground(Color.lightGray);
         restartButton.setFocusable(false);
         restartButton.setBorder(null);
         southPanel.add(restartButton, FlowLayout.CENTER);
@@ -387,7 +390,7 @@ public class GUI_Principal extends JFrame {
                                 opponentWindow.setVisible(true);
                             } else {
                                 if (e.getSource() == navyPanel.getButtonExplanation()) {
-                                    JOptionPane.showMessageDialog(null, "", "Como jugar", JOptionPane.PLAIN_MESSAGE, infoSentidos);
+                                    JOptionPane.showMessageDialog(null, "", "Como jugar", JOptionPane.PLAIN_MESSAGE, directionInfo);
                                 } else {
                                     if (gameState == 6) {
                                         if (e.getSource() == timer) {

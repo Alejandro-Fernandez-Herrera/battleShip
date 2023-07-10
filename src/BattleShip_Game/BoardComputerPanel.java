@@ -11,6 +11,7 @@ import java.awt.*;
  */
 
 public class BoardComputerPanel extends JPanel {
+    public static final String PATH ="/Resources/";
     private BackgroundPane panelTableroPosicion;
     private JLabel nombreTableroPosicion;
     private ModelBoard tableroPosicionOponente, tableroPrincipalOponente;
@@ -20,7 +21,7 @@ public class BoardComputerPanel extends JPanel {
     public BoardComputerPanel(){
         GridBagLayout gb = new GridBagLayout();
         this.setLayout(gb);
-        this.setBackground(Color.CYAN);
+        this.setBackground(Color.lightGray);
         tableroPosicionOponente = new ModelBoard();
         tableroPrincipalOponente = new ModelBoard();
         abecedario = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
@@ -56,7 +57,7 @@ public class BoardComputerPanel extends JPanel {
         private Image img;
 
         public BackgroundPane(){
-            img = new ImageIcon(getClass().getResource("/Resources/mar.jpg")).getImage();
+            img = new ImageIcon(getClass().getResource(PATH + "mar.jpg")).getImage();
             this.setLayout(new GridLayout(11, 11));
             this.setPreferredSize(new Dimension(400, 400));
             this.setBorder(BorderFactory.createLineBorder(Color.WHITE));

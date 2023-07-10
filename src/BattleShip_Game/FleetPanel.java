@@ -27,7 +27,7 @@ public class FleetPanel extends JPanel{
     public FleetPanel() {
         GridBagLayout gridBagLayout = new GridBagLayout();
         this.setLayout(gridBagLayout);
-        this.setBackground(Color.CYAN);
+        this.setBackground(Color.lightGray);
         this.setPreferredSize(new Dimension(600, 100));
         createShips();
 
@@ -55,7 +55,7 @@ public class FleetPanel extends JPanel{
         aircraftCarrier = new JButton();
         aircraftCarrier.setText("AIRCRAFT CARRIER");
         aircraftCarrier.setIcon(aircraftCarrierImage);
-        aircraftCarrier.setBackground(Color.CYAN);
+        aircraftCarrier.setBackground(Color.lightGray);
         aircraftCarrier.setHorizontalTextPosition(SwingConstants.CENTER);
         aircraftCarrier.setVerticalTextPosition(SwingConstants.BOTTOM);
         aircraftCarrier.setFocusable(false);
@@ -64,7 +64,7 @@ public class FleetPanel extends JPanel{
         destroyer = new JButton();
         destroyer.setText("DESTROYER");
         destroyer.setIcon(destroyerImage);
-        destroyer.setBackground(Color.CYAN);
+        destroyer.setBackground(Color.lightGray);
         destroyer.setHorizontalTextPosition(SwingConstants.CENTER);
         destroyer.setVerticalTextPosition(SwingConstants.BOTTOM);
         destroyer.setFocusable(false);
@@ -73,7 +73,7 @@ public class FleetPanel extends JPanel{
         frigate = new JButton();
         frigate.setText("FRIGATE");
         frigate.setIcon(frigateImage);
-        frigate.setBackground(Color.CYAN);
+        frigate.setBackground(Color.lightGray);
         frigate.setHorizontalTextPosition(SwingConstants.CENTER);
         frigate.setVerticalTextPosition(SwingConstants.BOTTOM);
         frigate.setFocusable(false);
@@ -82,7 +82,7 @@ public class FleetPanel extends JPanel{
         submarine = new JButton();
         submarine.setText("SUBMARINE");
         submarine.setIcon(submarineImage);
-        submarine.setBackground(Color.CYAN);
+        submarine.setBackground(Color.lightGray);
         submarine.setHorizontalTextPosition(SwingConstants.CENTER);
         submarine.setVerticalTextPosition(SwingConstants.BOTTOM);
         submarine.setFocusable(false);
@@ -147,7 +147,7 @@ public class FleetPanel extends JPanel{
         fleetPanel = new JPanel();
         fleetPanel.setLayout(new GridLayout(2, 2, 10, 10));
         fleetPanel.setPreferredSize(new Dimension(350, 300));
-        fleetPanel.setBackground(Color.CYAN);
+        fleetPanel.setBackground(Color.lightGray);
         fleetTitle = BorderFactory.createTitledBorder(blackline, "Your Ships");
         fleetTitle.setTitleJustification(TitledBorder.CENTER);
         fleetPanel.setBorder(fleetTitle);
@@ -167,7 +167,7 @@ public class FleetPanel extends JPanel{
 
         gameInformation = new JTextPane();
         gameInformation.setEditable(false);
-        gameInformation.setBackground(Color.CYAN);
+        gameInformation.setBackground(Color.lightGray);
         StyledDocument documentStyle = gameInformation.getStyledDocument();
         SimpleAttributeSet centerAttribute = new SimpleAttributeSet();
         StyleConstants.setAlignment(centerAttribute, StyleConstants.ALIGN_CENTER);
@@ -175,7 +175,7 @@ public class FleetPanel extends JPanel{
 
         gameInfoPanel = new JPanel(new GridLayout(2, 0, 0, 0));
         gameInfoPanel.setPreferredSize(new Dimension(350, 100));
-        gameInfoPanel.setBackground(Color.CYAN);
+        gameInfoPanel.setBackground(Color.lightGray);
         infoTitle = BorderFactory.createTitledBorder(blackline, "Game Information");
         infoTitle.setTitleJustification(TitledBorder.CENTER);
         gameInfoPanel.setBorder(infoTitle);
@@ -190,7 +190,7 @@ public class FleetPanel extends JPanel{
         // Button panel inside fleet panel
         buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(0, 2, 5, 10));
-        buttonPanel.setBackground(Color.CYAN);
+        buttonPanel.setBackground(Color.lightGray);
         buttonPanel.setPreferredSize(new Dimension(350, 120));
         orientationTitle = BorderFactory.createTitledBorder(blackline, "How do you want to arrange your fleet?");
         orientationTitle.setTitleJustification(TitledBorder.CENTER);
@@ -203,7 +203,7 @@ public class FleetPanel extends JPanel{
 // Panel inside button panel for vertical and horizontal buttons
         subButtonPanel = new JPanel(new GridLayout());
         subButtonPanel.setPreferredSize(new Dimension(175, 120));
-        subButtonPanel.setBackground(Color.CYAN);
+        subButtonPanel.setBackground(Color.lightGray);
         subButtonPanel.setLayout(new GridLayout(2, 0, 5, 5));
         subButtonPanel.add(vertical);
         subButtonPanel.add(horizontal);
@@ -212,7 +212,7 @@ public class FleetPanel extends JPanel{
 // Panel inside button panel for top-bottom, bottom-top, right-left, left-right buttons
         subButtonPanel2 = new JPanel();
         subButtonPanel2.setPreferredSize(new Dimension(175, 120));
-        subButtonPanel2.setBackground(Color.CYAN);
+        subButtonPanel2.setBackground(Color.lightGray);
         subButtonPanel2.setLayout(new GridLayout(4, 0, 5, 5));
         subButtonPanel2.add(topBottom);
         subButtonPanel2.add(bottomTop);

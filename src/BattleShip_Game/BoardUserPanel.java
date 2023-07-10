@@ -22,7 +22,7 @@ public class BoardUserPanel extends JPanel {
     public BoardUserPanel() {
         GridBagLayout layout = new GridBagLayout();
         this.setLayout(layout);
-        this.setBackground(Color.BLUE);
+        this.setBackground(Color.lightGray);
         positionBoard = new ModelBoard();
         mainBoard = new ModelBoard();
         columnLetters = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
@@ -84,8 +84,8 @@ public class BoardUserPanel extends JPanel {
         public BackgroundPane() {
             image = new ImageIcon(getClass().getResource(PATH + "mar.jpg")).getImage();
             this.setLayout(new GridLayout(11, 11));
-            this.setPreferredSize(new Dimension(400, 400));
-            this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            this.setPreferredSize(new Dimension(300, 300));
+            this.setBorder(BorderFactory.createLineBorder(Color.lightGray));
         }
 
         @Override
