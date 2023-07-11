@@ -71,7 +71,10 @@ public class BoardUserPanel extends JPanel {
         this.add(mainPanel, gbc);
 
         paintShotsLabel = new JLabel();
-        paintShotsLabel.setIcon(new ImageIcon(getClass().getResource(PATH + "tiros.png")));
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource(PATH + "tiros.png"));
+        Image image = imageIcon.getImage().getScaledInstance(150, 130, Image.SCALE_SMOOTH);
+        imageIcon.setImage(image);
+        paintShotsLabel.setIcon(imageIcon);
         gbc.gridx = 1;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
